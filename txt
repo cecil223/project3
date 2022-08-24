@@ -1,0 +1,12 @@
+#!/bin/bash
+User=$(whoami)
+Hostname=$(hostname)
+FreeRam=$(free -m | grep Mem | awk '{print $3}')
+Load=$(uptime | awk '{print $10 $11 $12}')
+RuntimeDays=$(uptime | awk '{print $3}')
+RootFree=$(df -h | grep '/dev/xvda2' | awk '{print $4}')
+echo "Welcome $User on $Hostname and time: `date`"
+echo "Available free Ram $FreeRam MB"
+echo "Current load Average: $Load"
+echo "Number of days running $RuntimeDays"
+echo "Freeroot partition size is $RootFree"

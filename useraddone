@@ -1,0 +1,23 @@
+#!/bin/bash
+# Add user to linux server
+# You need to be root or have sudo acces to execute this script
+echo -n "Enter the username:"
+read username
+echo -n "Enter the password:"
+read -s password
+sudo adduser "$username"
+echo "$password" | sudo passwd "$username" --stdin
+sudo echo "$username ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$username
+#sudo -su $username 
+#sudo userdel $username
+echo "Create a file"
+touch port
+echo "reaasign file to new user"
+sudo chown $username port
+sudo chgrp $username port
+
+<<pass
+--stdin
+This option is used to indicate that passwd should read the new password from standard input, which can be a pipe.
+cat /etc/passwd to verify
+pass

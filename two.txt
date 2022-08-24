@@ -1,0 +1,8 @@
+#!/bin/bash
+pwd
+Name="John"
+a=6
+b=3
+echo "My name is $Name, I am $a * $b years old"
+pwd
+date
